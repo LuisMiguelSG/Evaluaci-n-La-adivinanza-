@@ -1,0 +1,42 @@
+Problema: Generar un codigo capaz de recrear un sistema de juego basado en adivinanza
+
+Entrada(s): 
+- Tamaño lado por lado de la matriz (size)
+- Adivinación del valor oculto (solution)
+- Cuestionación entre repetir o no el juego (continue)
+
+Salida(s):
+- Mensaje indicando si el usuario acerto o no acerto al momento de adivinar al valor oculto
+
+Otras variables:
+- Lista de caracteres, digitos y conjunto(@,#,$) (board)
+- Limite de tiempo de muestra de la cuadricula (time_limit)
+- Valor oculto en la cuadricula (hidden_value)
+ 
+Proceso(s):
+- Inicializar función que muestre la nueva matriz (con el oculto) y la salida (play_game())
+- Solicitar el tamaño lado por lado de la matriz (colocar un input).
+- Inicializar una variable donde se guardará el resultado (size).
+- Inicializar una función que almacene una lista de caracteres, digitos y el conjunto(@#$) (generate_board(size))
+- Aleatorizar el orden de los valores en la lista
+- Generar matriz
+- Inicializar una función para mostrar la matriz al usuario (show_board(board))
+- Igualar la función (generate_board(size)) con la variable (board)
+- Mostrar la matriz al usuario (show_board(board))
+- Inicializar función que determine el tiempo limite de la matriz, en base a la ecuación: size ^ 2 - 1 (time(size))
+- Igualar la función (time(size)) con la variable (time_limit)
+- Inicializar conteo de tiempo limite de muestra de la matriz (time_limit)
+- Inicializar función para reemplazar el valor oculto por un "*" (hide_value(board, value))
+- Inicializar función para verificar el caracter "*" y reemplazarlo por (value) (reveal_value(board, value)
+- Mostrar la nueva matriz
+- Solicitar el valor oculto al usuario
+- Inicializar una variable donde se guardará el resultado (solution)
+- Inicializar un ciclo en donde si solution = valor oculto (hidden_value), Mostrar "¡Congratulations!, encontraste al adivino", Sino, Mostrar "Suerte para la proxima. El valor era ", hidden_value.
+- Inicializar función para determinar si el usuario desea intentarlo de nuevo (main())
+- Solicitar si el usuario desea intentarlo de nuevo "s/n"
+- Inicializar una variable donde se guardará el resultado (continue)
+- Inicializar un ciclo en donde si el valor de continue es diferente de "s", terminar la función
+
+Restricciones: 
+- Aplica para números enteros no negativos y decimales -> Se debe validar el signo y el DataType Integer
+- El usuario puede escribir cualquier valor -> Se debe validar los valores permitidos para el rango de la matriz
