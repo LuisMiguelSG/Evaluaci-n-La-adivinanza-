@@ -1,0 +1,90 @@
+Program simulador_de_juego_de_adivinanza
+// Programa para simular el sistema de un juego basado en adivinanza
+
+Start 
+	
+	// Declaración de variables
+
+	Declare Integer size
+	Declare Integer, Character solution
+	Declare Character continue
+	
+	// Librerias
+
+	From string import ascii_lowercase, digits
+	From random import choice, shuffle
+	From time import sleep
+	From IPython.display import clear_output
+
+	// Proceso
+
+	Function String generate_board(size)
+    		board = list(ascii_lowercase + digits + ["@", "#", "$"])
+    		shuffle(board)
+    		Return [[choice(board) for _ in range(size)] for _ in range(size)]
+
+	Function show_board(board)
+    		Display "(\n".join(" ".join(row) for row in board)"
+
+	Function hide_value(board, value)
+    		For row in board do
+        		If value in row Then
+            			row[row.index(value)] = "*"
+           			Break
+
+	Function reveal_value(board, value)
+    		For row in board do
+        		If "*" in row then
+            			row[row.index("*")] = value
+
+	Function time(size)
+    		Return size ^ 2 - 1
+
+	Function play_game()
+		
+		// Entrada principal
+	
+    		Display "Tamaño lado por lado: "
+    		Input size
+
+    		board = generate_board(size)
+    		Display "Adivina el adivinador"
+    		show_board(board)
+    		time_limit = time(size)
+    		sleep(time_limit)
+    		clear_output(wait=True)
+    		hidden_value = choice(board[0])
+    		hide_value(board, hidden_value)
+    		show_board(board)
+    		Display ""
+		
+		// Entrada de resolución
+
+    		Display "Adivina el valor oculto: "
+    		Input solution
+
+    		reveal_value(board, hidden_value)
+		
+		// Salida
+
+    		If solution == hidden_value Then
+			Display "¡Congratulations!, encontraste al adivino"
+    		Else
+			Display "Suerte para la proxima. El valor era ", hidden_value.
+
+	Function main()
+    		While True Then
+        		play_game()
+
+			// Entrada de iteración
+
+			Display "Play Again (s/n) "
+			Input continue
+
+        		If continue.lower() != "s" then
+            			Break
+
+	If __name__ == "__main__" Then
+   		main()
+
+Stop
